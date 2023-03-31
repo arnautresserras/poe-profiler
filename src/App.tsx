@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
+import Routing from './pages/Routing';
+import { API_URL } from './utils/url.constants';
 
 function App() {
+  const getProfile = async (accountName: string) => {
+
+    await fetch(API_URL + "profile", {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => console.log(error))
+  }
+
+  useEffect(() => {
+    getProfile("arnautresserras");
+  },[]); 
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className='App'>
+        <Routing />
+      </div>
   );
 }
 

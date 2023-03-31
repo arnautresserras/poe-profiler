@@ -1,0 +1,33 @@
+.Search{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    &-Form{
+        width: 60%;
+        text-align: center;
+        &__input{
+            background: transparent;
+            width: 40vw;
+            font-size: 2rem;
+            border: 1px solid #ffe86e;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 3rem;
+            padding: .2rem;
+            color: #ffe86e;
+
+            &::placeholder{
+                color: #ffe86e;
+                font-size: 1.8rem;
+            }
+            &:focus{
+                border: 3px solid #ffe86e;
+                outline: none;
+                caret-color: #ffe86e;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
